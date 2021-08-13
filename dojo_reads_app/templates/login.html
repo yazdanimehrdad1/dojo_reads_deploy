@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">   
+    
+    {%load static%}
+    <link rel="stylesheet" href="{%static 'css/login.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="sidenav">
+        <div class="login-main-text">
+           <h2>Application<br> Login Page</h2>
+           <p>Login or register from here to access.</p>
+        </div>
+     </div>
+
+
+     <div class="main">
+
+        {%if messages %}
+            {%for message in messages%}
+                <p>{{message}}</p>
+            {%endfor%}
+        {%endif%}
+    
+        <div ID="wrapper">
+
+                <div class="col-md-4 col-sm-12">
+                    <div class="login-form">
+                    <h2>Register</h2>
+
+                    <form  action="/register" method="POST"> 
+                        {% csrf_token%}
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" name="first_name" class="form-control" placeholder="First Name">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" name="last_name" class="form-control" placeholder="Last Name">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" name="email" class="form-control" placeholder="Email">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" name="password" class="form-control" placeholder="Password">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Confirm Password</label>
+                            <input type="password" name="confirm_password" class="form-control" placeholder="Confirm Password">
+                        </div>
+                        <button type="submit" class="btn btn-secondary">Register</button>
+                    </form>
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-md-4 col-sm-12">
+                <div class="login-form">
+                    <h2>Log In</h2>
+                    <form  action="/login" method="POST"> 
+                        {% csrf_token%}
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" name="email" class="form-control" placeholder="User Name">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" name="password" class="form-control" placeholder="Password">
+                        </div>
+                        <button type="submit" class="btn btn-black">Login</button>
+                    </form>
+                </div>
+                </div>
+
+        </div>
+
+
+     </div>
+
+
+</body>
+</html>
+
